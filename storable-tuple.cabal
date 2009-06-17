@@ -1,5 +1,5 @@
 Name:         storable-tuple
-Version:      0.0.1
+Version:      0.0.2
 Category:     Data, Foreign
 Synopsis:     Storable instance for pairs and triples
 Description:
@@ -26,7 +26,7 @@ Source-Repository head
 Source-Repository this
   Type:     darcs
   Location: http://code.haskell.org/~thielema/storable-tuple/
-  Tag:      0.0.1
+  Tag:      0.0.2
 
 Flag splitBase
   description: Choose the new smaller, split-up base package.
