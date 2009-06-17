@@ -36,7 +36,8 @@ Library
     storable-record >=0.0.1 && <0.1,
     utility-ht >=0.0.1 && <0.1
   If flag(splitBase)
-    Build-Depends: base >= 3
+    Build-Depends:
+      base >= 3 && <5
   Else
     Build-Depends:
       special-functors >= 1.0 && <1.1,
