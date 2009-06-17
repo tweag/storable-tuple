@@ -5,7 +5,7 @@ module Foreign.Storable.Tuple where
 
 import Foreign.Storable (Storable (..), )
 import qualified Foreign.Storable.Record as Store
-import Control.Applicative (liftA2, liftA3, )
+import Control.Applicative (liftA2, liftA3, pure, (<*>), )
 
 import Data.Tuple.HT (fst3, snd3, thd3, )
 
@@ -41,6 +41,30 @@ storeTriple =
       (Store.element fst3)
       (Store.element snd3)
       (Store.element thd3)
+
+instance (Storable a, Storable b, Storable c, Storable d) => Storable (a,b,c,d) where
+   sizeOf    = Store.sizeOf storeQuadruple
+   alignment = Store.alignment storeQuadruple
+   peek      = Store.peek storeQuadruple
+   poke      = Store.poke storeQuadruple
+
+storeQuadruple ::
+   (Storable a, Storable b, Storable c, Storable d) =>
+   Store.Dictionary (a,b,c,d)
+storeQuadruple =
+   Store.run $
+   pure (,,,)
+      <*> (Store.element $ \(x,_,_,_) -> x)
+      <*> (Store.element $ \(_,x,_,_) -> x)
+      <*> (Store.element $ \(_,_,x,_) -> x)
+      <*> (Store.element $ \(_,_,_,x) -> x)
+{-
+   liftA4 (,,,)
+      (Store.element $ \(x,_,_,_) -> x)
+      (Store.element $ \(_,x,_,_) -> x)
+      (Store.element $ \(_,_,x,_) -> x)
+      (Store.element $ \(_,_,_,x) -> x)
+-}
 
 
 {-
