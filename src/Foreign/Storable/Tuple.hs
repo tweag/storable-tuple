@@ -10,6 +10,12 @@ import Control.Applicative (liftA2, liftA3, pure, (<*>), )
 import Data.Tuple.HT (fst3, snd3, thd3, )
 
 
+instance Storable () where
+   sizeOf    _ = 0
+   alignment _ = 1
+   peek      _ = return ()
+   poke    _ _ = return ()
+
 instance (Storable a, Storable b) => Storable (a,b) where
    sizeOf    = Store.sizeOf storePair
    alignment = Store.alignment storePair
