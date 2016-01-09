@@ -18,6 +18,9 @@ Stability:           Experimental
 Build-Type:          Simple
 Tested-With:         GHC==6.8.2
 Cabal-Version:       >=1.6
+Extra-Source-Files:
+  unit/instance/Foreign/Storable/Unit.hs
+  unit/no-instance/Foreign/Storable/Unit.hs
 
 Source-Repository head
   Type:     darcs
@@ -29,15 +32,22 @@ Source-Repository this
   Tag:      0.0.3
 
 Flag splitBase
-  description: Choose the new smaller, split-up base package.
+  Description: Choose the new smaller, split-up base package.
+
+Flag instanceUnit
+  Description: Custom instance Storable ()
 
 Library
   Build-Depends:
     storable-record >=0.0.1 && <0.1,
     utility-ht >=0.0.1 && <0.1
   If flag(splitBase)
-    Build-Depends:
-      base >= 3 && <5
+    If flag(instanceUnit)
+      Build-Depends: base >=3 && <4.9
+      Hs-Source-Dirs: unit/instance
+    Else
+      Build-Depends: base >=4.9 && <5
+      Hs-Source-Dirs: unit/no-instance
   Else
     Build-Depends:
       special-functors >= 1.0 && <1.1,
@@ -48,3 +58,5 @@ Library
 
   Exposed-Modules:
     Foreign.Storable.Tuple
+  Other-Modules:
+    Foreign.Storable.Unit
