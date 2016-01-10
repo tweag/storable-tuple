@@ -16,7 +16,7 @@ Maintainer:          Henning Thielemann <storable@henning-thielemann.de>
 Homepage:            http://code.haskell.org/~thielema/storable-tuple/
 Stability:           Experimental
 Build-Type:          Simple
-Tested-With:         GHC==6.8.2
+Tested-With:         GHC==6.8.2, GHC==8.0.1
 Cabal-Version:       >=1.6
 Extra-Source-Files:
   unit/instance/Foreign/Storable/Unit.hs
