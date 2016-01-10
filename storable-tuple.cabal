@@ -34,15 +34,12 @@ Source-Repository this
 Flag splitBase
   Description: Choose the new smaller, split-up base package.
 
-Flag instanceUnit
-  Description: Custom instance Storable ()
-
 Library
   Build-Depends:
     storable-record >=0.0.1 && <0.1,
     utility-ht >=0.0.1 && <0.1
   If flag(splitBase)
-    If flag(instanceUnit)
+    If impl(ghc<8)
       Build-Depends: base >=3 && <4.9
       Hs-Source-Dirs: unit/instance
     Else
