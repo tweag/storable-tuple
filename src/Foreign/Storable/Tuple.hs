@@ -3,7 +3,7 @@ This should be in the standard library.
 -}
 module Foreign.Storable.Tuple where
 
-import Foreign.Storable.Unit ()
+import Data.Orphans ()
 import Foreign.Storable (Storable (..), )
 import qualified Foreign.Storable.Record as Store
 import Control.Applicative (liftA2, liftA3, pure, (<*>), )
