@@ -8,7 +8,7 @@ Description:
 
   The only purpose of this package is to provide a standard location
   for this instance so that other packages needing this instance
-  can play nicely together. 
+  can play nicely together.
 License:             BSD3
 License-file:        LICENSE
 Author:              Henning Thielemann <storable@henning-thielemann.de>
