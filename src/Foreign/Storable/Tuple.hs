@@ -17,6 +17,7 @@ instance (Storable a, Storable b) => Storable (a,b) where
    peek      = Store.peek storePair
    poke      = Store.poke storePair
 
+{-# INLINE storePair #-}
 storePair ::
    (Storable a, Storable b) =>
    Store.Dictionary (a,b)
@@ -33,6 +34,7 @@ instance (Storable a, Storable b, Storable c) => Storable (a,b,c) where
    peek      = Store.peek storeTriple
    poke      = Store.poke storeTriple
 
+{-# INLINE storeTriple #-}
 storeTriple ::
    (Storable a, Storable b, Storable c) =>
    Store.Dictionary (a,b,c)
@@ -49,6 +51,7 @@ instance (Storable a, Storable b, Storable c, Storable d) => Storable (a,b,c,d) 
    peek      = Store.peek storeQuadruple
    poke      = Store.poke storeQuadruple
 
+{-# INLINE storeQuadruple #-}
 storeQuadruple ::
    (Storable a, Storable b, Storable c, Storable d) =>
    Store.Dictionary (a,b,c,d)
