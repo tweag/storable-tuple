@@ -57,7 +57,7 @@ storeQuadruple ::
    Store.Dictionary (a,b,c,d)
 storeQuadruple =
    Store.run $
-   pure (,,,)
+   pure (\a b c d -> (a,b,c,d))
       <*> (Store.element $ \(x,_,_,_) -> x)
       <*> (Store.element $ \(_,x,_,_) -> x)
       <*> (Store.element $ \(_,_,x,_) -> x)
